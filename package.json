@@ -1,9 +1,9 @@
 {
   "name": "react-native-plus-button-box",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A component to display an Android-like \"+\" button and display action items",
   "main": "CallToActionBox.js",
-  "dependencies": {
+  "devDependencies": {
     "react": "15.0.2",
     "react-native": "0.26.2"
   },
