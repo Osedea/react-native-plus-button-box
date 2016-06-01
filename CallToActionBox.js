@@ -79,7 +79,7 @@ export default class CallToActionBox extends Component {
             React.PropTypes.shape({
                 key: React.PropTypes.string.isRequired,
                 onPress: React.PropTypes.func.isRequired,
-                text: React.PropTypes.string.isRequired,
+                text: React.PropTypes.string,
             })
         ),
         boxColor: React.PropTypes.string,
@@ -146,7 +146,7 @@ export default class CallToActionBox extends Component {
                                                 styles.actionText,
                                             ]}
                                         >
-                                            {action.text}
+                                            {action.text || action.key}
                                         </Text>
                                     </View>
                                 </TouchableHighlight>
