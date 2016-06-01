@@ -119,7 +119,7 @@ export default class CallToActionBox extends Component {
                         : { backgroundColor: colors.defaultBoxBackgroundColor },
                 ]}
             >
-                {this.state.callToActionsDisplay
+                {this.props.actions.length > 1 && this.state.callToActionsDisplay
                     ? this.props.actions.map((action, index) => {
                         if (action === null) {
                             return null;
@@ -156,7 +156,10 @@ export default class CallToActionBox extends Component {
                     : null
                 }
                 <TouchableWithoutFeedback
-                    onPress={this.handlePlusPress}
+                    onPress={this.props.actions.length > 1
+                        ? this.handlePlusPress
+                        : this.props.actions[0].onPress
+                    }
                 >
                     <View
                         style={[
