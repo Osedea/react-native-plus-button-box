@@ -5,7 +5,42 @@ A component to display an Android-like "+" button and display action items
 
 Property Name | Type
 --- | ---
-actions | React.PropTypes.arrayOf( <br>     React.PropTypes.shape({ <br>         key: React.PropTypes.string.isRequired,<br>         onPress: React.PropTypes.func.isRequired,<br>         text: React.PropTypes.string.isRequired<br>     }) <br> )
-boxColor | React.PropTypes.string
-buttonColor | React.PropTypes.string
-underlayColor | React.PropTypes.string
+actions | arrayOf(<br>  { <br>         key: string,<br>         onPress: function,<br>         text?: string<br>     }) <br> )
+boxColor | string
+buttonColor | string
+underlayColor | string
+
+# Usage
+
+```js
+import CallToActionBox from 'react-native-plus-button-box';
+
+class MyComp extends Component {
+    render() {
+        return (
+            <CallToActionBox
+                actions={[
+                    {
+                        key: 'test',
+                        text: 'Test me',
+                        onPress: () => Alert.alert('Hello')
+                    },
+                    {
+                        key: 'test2',
+                        text: 'Test me again',
+                        onPress: () => Alert.alert('Hello to you too')
+                    }
+                ]}
+            />
+        );
+    }
+}
+```
+
+# Result
+
+![](./usage.gif)
+
+Closed | Open
+--- | ---
+![](./closed.png) | ![](./open.png)

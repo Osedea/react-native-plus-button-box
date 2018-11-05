@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
     Image,
@@ -73,36 +75,33 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class CallToActionBox extends Component {
-    static propTypes = {
-        actions: React.PropTypes.arrayOf(
-            React.PropTypes.shape({
-                key: React.PropTypes.string.isRequired,
-                onPress: React.PropTypes.func.isRequired,
-                text: React.PropTypes.string,
-            })
-        ),
-        boxColor: React.PropTypes.string,
-        buttonColor: React.PropTypes.string,
-        underlayColor: React.PropTypes.string,
+export type Actions = {
+    key: string,
+    onPress: (*) => void,
+    text?: string,
+};
+
+type Props = {
+    actions: Array<Action>,
+    boxColor?: string,
+    buttonColor?: string,
+    underlayColor?: string,
+    style?: Object,
+};
+
+export default class CallToActionBox extends Component<Props> {
+    state = {
+        callToActionsDisplay: false,
     };
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            callToActionsDisplay: false,
-        };
-    }
-
-    handlePlusPress = () => {
+    handleButtonPress = () => {
         this.setState({
             callToActionsDisplay: !this.state.callToActionsDisplay,
         });
     };
 
     createPressHandler = (functionToCall) => () => {
-        this.toggleMoreActions();
+        this.handleButtonPress();
         functionToCall();
     };
 
@@ -117,6 +116,7 @@ export default class CallToActionBox extends Component {
                     this.props.boxColor
                         ? { backgroundColor: this.props.boxColor }
                         : { backgroundColor: colors.defaultBoxBackgroundColor },
+                    this.props.style,
                 ]}
             >
                 {this.props.actions.length > 1 && this.state.callToActionsDisplay
@@ -157,7 +157,7 @@ export default class CallToActionBox extends Component {
                 }
                 <TouchableWithoutFeedback
                     onPress={this.props.actions.length > 1
-                        ? this.handlePlusPress
+                        ? this.handleButtonPress
                         : this.props.actions[0].onPress
                     }
                 >
