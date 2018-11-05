@@ -5,7 +5,7 @@ A component to display an Android-like "+" button and display action items
 
 Property Name | Type
 --- | ---
-actions | arrayOf(<br>  { <br>         key: string,<br>         onPress: function,<br>         text?: string<br>     }) <br> )
+actions | arrayOf(<br>  { <br>         key: string,<br>         onPress: function,<br>         text?: string<br>     } <br> )
 boxColor | string
 buttonColor | string
 underlayColor | string
